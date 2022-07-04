@@ -8,7 +8,7 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
     end
 end)
 if game.PlaceId == 6872274481 or game.PlaceId == 8560631822 or game.PlaceId == 8444591321 then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCore/MClientForRoblox/main/sSripts/bedwars.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCore/MClientForRoblox/main/Scripts/bedwars.lua"))()
 elseif game:HttpGet("https://raw.githubusercontent.com/NTDCore/MClientForRoblox/main/Scripts/"..game.PlaceId..".lua") then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/NTDCore/MClientForRoblox/main/Scripts/"..game.PlaceId..".lua"))()
 elseif isfile("MClient/Scripts/"..game.PlaceId..".lua") then
