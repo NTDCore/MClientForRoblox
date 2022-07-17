@@ -295,7 +295,7 @@ ScreenGuitwo.Name = "RektskyNotificationGui"
     title.TextSize = 16.000
     title.TextXAlignment = Enum.TextXAlignment.Left
 
-    close.Name = "close"
+--[[    close.Name = "close"
     close.Parent = MainHeader
     close.BackgroundTransparency = 1.000
     close.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
@@ -315,7 +315,7 @@ ScreenGuitwo.Name = "RektskyNotificationGui"
 		}):Play()
         wait(1)
         ScreenGui:Destroy()
-    end)
+    end)]]
 
     MainSide.Name = "MainSide"
     MainSide.Parent = Main
@@ -421,60 +421,6 @@ function Kavo:TogglekavoUi()
         end
     end
 end
-
-local Background
-local function createnotification(title, text, delay2, toggled)
-    spawn(function()
-        if ScreenGuitwo:FindFirstChild("Background") then ScreenGuitwo:FindFirstChild("Background"):Destroy() end
-        local frame = Instance.new("Frame")
-        frame.Size = UDim2.new(0, 100, 0, 115)
-        frame.Position = UDim2.new(0.5, 0, 0, -115)
-        frame.BorderSizePixel = 0
-        frame.AnchorPoint = Vector2.new(0.5, 0)
-        frame.BackgroundTransparency = 0.5
-        frame.BackgroundColor3 = Color3.new(0, 0, 0)
-        frame.Name = "Background"
-        frame.Parent = ScreenGuitwo
-        local frameborder = Instance.new("Frame")
-        frameborder.Size = UDim2.new(1, 0, 0, 8)
-        frameborder.BorderSizePixel = 0
-        frameborder.BackgroundColor3 = (toggled and Color3.fromRGB(102, 205, 67) or Color3.fromRGB(205, 64, 78))
-        frameborder.Parent = frame
-        local frametitle = Instance.new("TextLabel")
-        frametitle.Font = Enum.Font.SourceSansLight
-        frametitle.BackgroundTransparency = 1
-        frametitle.Position = UDim2.new(0, 0, 0, 30)
-        frametitle.TextColor3 = (toggled and Color3.fromRGB(102, 205, 67) or Color3.fromRGB(205, 64, 78))
-        frametitle.Size = UDim2.new(1, 0, 0, 28)
-        frametitle.Text = "          "..title
-        frametitle.TextSize = 24
-        frametitle.TextXAlignment = Enum.TextXAlignment.Left
-        frametitle.TextYAlignment = Enum.TextYAlignment.Top
-        frametitle.Parent = frame
-        local frametext = Instance.new("TextLabel")
-        frametext.Font = Enum.Font.SourceSansLight
-        frametext.BackgroundTransparency = 1
-        frametext.Position = UDim2.new(0, 0, 0, 68)
-        frametext.TextColor3 = Color3.new(1, 1, 1)
-        frametext.Size = UDim2.new(1, 0, 0, 28)
-        frametext.Text = "          "..text
-        frametext.TextSize = 24
-        frametext.TextXAlignment = Enum.TextXAlignment.Left
-        frametext.TextYAlignment = Enum.TextYAlignment.Top
-        frametext.Parent = frame
-        local textsize = game:GetService("TextService"):GetTextSize(frametitle.Text, frametitle.TextSize, frametitle.Font, Vector2.new(100000, 100000))
-        local textsize2 = game:GetService("TextService"):GetTextSize(frametext.Text, frametext.TextSize, frametext.Font, Vector2.new(100000, 100000))
-        if textsize2.X > textsize.X then textsize = textsize2 end
-        frame.Size = UDim2.new(0, textsize.X + 38, 0, 115)
-        pcall(function()
-            frame:TweenPosition(UDim2.new(0.5, 0, 0, 20), Enum.EasingDirection.InOut, Enum.EasingStyle.Quad, 0.15)
-            game:GetService("Debris"):AddItem(frame, delay2 + 0.15)
-        end)
-    end)
-end
-
-createnotification("Loaded", "Press Toggle Button to toggle GUI", 3, true)
-
     
     coroutine.wrap(function()
         while wait() do
