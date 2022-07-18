@@ -295,7 +295,7 @@ ScreenGuitwo.Name = "RektskyNotificationGui"
     title.TextSize = 16.000
     title.TextXAlignment = Enum.TextXAlignment.Left
 
---[[    close.Name = "close"
+    close.Name = "close"
     close.Parent = MainHeader
     close.BackgroundTransparency = 1.000
     close.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
@@ -315,7 +315,7 @@ ScreenGuitwo.Name = "RektskyNotificationGui"
 		}):Play()
         wait(1)
         ScreenGui:Destroy()
-    end)]]
+    end)
 
     MainSide.Name = "MainSide"
     MainSide.Parent = Main
@@ -366,51 +366,6 @@ ScreenGuitwo.Name = "RektskyNotificationGui"
     infoContainer.ClipsDescendants = true
     infoContainer.Position = UDim2.new(0.299047619, 0, 0.874213815, 0)
     infoContainer.Size = UDim2.new(0, 368, 0, 33)
-    
-local foldername = "MClient/config"
-local conf = {
-	["file"]=foldername.."/"..game.PlaceId..".json",
-	["functions"]={}
-}
-
-if game.PlaceId == 6872274481 or game.PlaceId == 8560631822 or game.PlaceId == 8444591321 then
-    conf["file"] = foldername.."/bedwars.json"
-end
-
-function conf.functions:MakeFile()
-	if isfile(conf["file"]) then return end
-	if not isfolder(foldername)  then
-		makefolder(foldername)
-	end
-	writefile(conf["file"],"{}")
-end
-
-function conf.functions:LoadConfigs()
-	if not isfile(conf["file"]) then
-		conf["functions"]:MakeFile()
-	end
-    wait(0.5)
-	return game:GetService("HttpService"):JSONDecode(readfile(conf["file"]))
-end
-
-function conf.functions:WriteConfigs(tab)
-	conf["functions"]:MakeFile()
-	writefile(conf["file"],game:GetService("HttpService"):JSONEncode((tab or {})))
-end
-
-local configtable = (conf["functions"]:LoadConfigs() or {})
-
-local configsaving = true
-
-spawn(function()
-    repeat
-        conf["functions"]:WriteConfigs(configtable)
-        task.wait(5)
-    until (not configsaving)
-end)
-if isfolder("MClient/config") == false then
-    makefolder("MClient/config")
-end
 
 function Kavo:TogglekavoUi()
     if not ScreenGui.Enabled and game:GetService("UserInputService"):GetFocusedTextBox() == nil then
